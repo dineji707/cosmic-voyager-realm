@@ -1,14 +1,19 @@
 import { motion } from "framer-motion";
+import Navigation from "@/components/Navigation";
 import SpaceCanvas from "@/components/hackathon/SpaceCanvas";
 import LearningCard from "@/components/hackathon/LearningCard";
-import GamesCard from "@/components/hackathon/GamesCard";
+import EnhancedGamesCard from "@/components/hackathon/EnhancedGamesCard";
 import AIAssistCard from "@/components/hackathon/AIAssistCard";
 
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
+      
       {/* Top Section - Space Canvas */}
-      <SpaceCanvas />
+      <div className="pt-16">
+        <SpaceCanvas />
+      </div>
 
       {/* Header */}
       <div className="container mx-auto px-4 py-8">
@@ -28,7 +33,7 @@ const LandingPage = () => {
         {/* Bottom Section - Three Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <LearningCard />
-          <GamesCard />
+          <EnhancedGamesCard />
           <AIAssistCard />
         </div>
       </div>
