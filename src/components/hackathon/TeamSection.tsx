@@ -101,7 +101,7 @@ const TeamSection = () => {
             className="cursor-pointer"
             onClick={() => setSelectedMember(member)}
           >
-            <Card className="h-full border-primary/20 bg-card/50 backdrop-blur-sm transition-all hover:shadow-[0_0_40px_hsl(var(--primary)/0.4)] hover:border-primary/40">
+            <Card className="h-full border-2 border-primary/30 bg-card/10 backdrop-blur-md transition-all hover:shadow-[0_0_40px_hsl(var(--primary)/0.6),0_0_80px_hsl(var(--accent)/0.3)] hover:border-accent/50 hover:bg-card/20" style={{ boxShadow: '0 0 20px hsl(var(--primary) / 0.2), inset 0 0 20px hsl(var(--primary) / 0.05)' }}>
               <CardHeader className="text-center">
                 <motion.div
                   className="mx-auto mb-4"

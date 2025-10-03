@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Gamepad2, Trophy, HelpCircle, Timer, Star, Zap } from "lucide-react";
+import { Gamepad2, Trophy, HelpCircle, Timer, Star, Zap, Bot } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -149,12 +149,13 @@ const EnhancedGamesCard = () => {
 
   return (
     <motion.div
+      id="quiz-section"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
       whileHover={{ y: -5 }}
     >
-      <Card className="h-full border-accent/20 bg-card/50 backdrop-blur-sm transition-all hover:shadow-[0_0_30px_hsl(var(--accent)/0.3)]">
+      <Card className="h-full border-accent/20 bg-card/30 backdrop-blur-md transition-all hover:shadow-[0_0_30px_hsl(var(--accent)/0.3)]">
         <CardHeader>
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-3">
@@ -292,10 +293,43 @@ const EnhancedGamesCard = () => {
                 </AnimatePresence>
               ) : null}
 
-              <Button onClick={resetQuiz} variant="outline" className="w-full">
-                Reset Quiz
-              </Button>
+              <div className="space-y-3">
+                <Button onClick={resetQuiz} variant="outline" className="w-full">
+                  Reset Quiz
+                </Button>
+                
+                <Button 
+                  variant="secondary"
+                  className="w-full gap-2"
+                  onClick={() => {
+                    const aiSection = document.getElementById('ai-assist-section');
+                    aiSection?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }}
+                >
+                  <Bot className="w-4 h-4" />
+                  Need Help? Ask AI Assist
+                </Button>
+              </div>
             </div>
+          )}
+          
+          {!isPlaying && currentQuestion > 0 && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="mt-4 p-4 rounded-lg bg-gradient-to-r from-primary/20 to-accent/20 border-2 border-primary/30"
+            >
+              <div className="text-center">
+                <Trophy className="w-12 h-12 text-accent mx-auto mb-2" />
+                <h3 className="text-2xl font-bold mb-1">Final Score</h3>
+                <p className="text-4xl font-bold text-primary mb-2">{score} points</p>
+                <p className="text-sm text-muted-foreground">
+                  {score >= 200 ? "🌟 Amazing! You're a space expert!" :
+                   score >= 100 ? "🚀 Great job! Keep learning!" :
+                   "💫 Good start! Try again to improve!"}
+                </p>
+              </div>
+            </motion.div>
           )}
         </CardContent>
       </Card>
