@@ -77,28 +77,48 @@ const AIAssistCard = () => {
                   animate={{ opacity: 1, x: 0 }}
                   className={`flex ${msg.isUser ? "justify-end" : "justify-start"}`}
                 >
-                  <div
-                    className={`max-w-[80%] rounded-lg p-3 ${
+                  <motion.div
+                    className={`max-w-[80%] rounded-xl p-4 ${
                       msg.isUser
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-secondary text-secondary-foreground"
+                        ? "bg-primary text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.5)]"
+                        : "bg-secondary text-secondary-foreground shadow-[0_0_20px_hsl(var(--secondary)/0.3)]"
                     }`}
+                    whileHover={{ scale: 1.02 }}
+                    animate={
+                      msg.isUser
+                        ? {
+                            boxShadow: [
+                              "0 0 20px hsl(var(--primary)/0.5)",
+                              "0 0 30px hsl(var(--primary)/0.7)",
+                              "0 0 20px hsl(var(--primary)/0.5)",
+                            ],
+                          }
+                        : {}
+                    }
+                    transition={
+                      msg.isUser
+                        ? { duration: 2, repeat: Infinity }
+                        : {}
+                    }
                   >
                     {msg.isTyping ? (
                       <div className="flex gap-1">
                         <motion.span
+                          className="text-lg"
                           animate={{ opacity: [0.3, 1, 0.3] }}
                           transition={{ duration: 1, repeat: Infinity, delay: 0 }}
                         >
                           •
                         </motion.span>
                         <motion.span
+                          className="text-lg"
                           animate={{ opacity: [0.3, 1, 0.3] }}
                           transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
                         >
                           •
                         </motion.span>
                         <motion.span
+                          className="text-lg"
                           animate={{ opacity: [0.3, 1, 0.3] }}
                           transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
                         >
@@ -108,7 +128,7 @@ const AIAssistCard = () => {
                     ) : (
                       msg.text
                     )}
-                  </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>

@@ -4,6 +4,7 @@ import SpaceCanvas from "@/components/hackathon/SpaceCanvas";
 import LearningCard from "@/components/hackathon/LearningCard";
 import EnhancedGamesCard from "@/components/hackathon/EnhancedGamesCard";
 import AIAssistCard from "@/components/hackathon/AIAssistCard";
+import TeamSection from "@/components/hackathon/TeamSection";
 
 const LandingPage = () => {
   return (
@@ -37,6 +38,9 @@ const LandingPage = () => {
           <AIAssistCard />
         </div>
       </div>
+
+      {/* Team Section */}
+      <TeamSection />
     </div>
   );
 };
